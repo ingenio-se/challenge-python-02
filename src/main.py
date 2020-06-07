@@ -1,12 +1,31 @@
-# Resolve the problem!!
 import string
+import random 
 
 SYMBOLS = list('!"#$%&\'()*+,-./:;?@[]^_`{|}~')
+TYPES = ["MIN","MAY","DIG","SYMB"]
+
+
 
 
 def generate_password():
-    # Start coding here
+    password=""
+    while not validate(password):
+        password=""
+        size = random.randint(8,16)
+        for i in range(0,size):
+            selector = random.choice(TYPES)
+            if selector == "MIN":
+                password += random.choice(string.ascii_lowercase)
+            if selector == "MAY":
+                password += random.choice(string.ascii_uppercase)
+            if selector == "DIG":
+                password += random.choice(string.digits)
+            if selector == "SYMB":
+                password += random.choice(SYMBOLS)
+        
+        #print(password)
 
+    return password
 
 def validate(password):
 
